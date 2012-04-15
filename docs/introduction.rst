@@ -43,7 +43,9 @@ comme une variable.
 Ces variables peuvent être liées entre elles par des équations
 plus ou moins complexes.
 Cela permet de générer des fontes de différentes tailles (12, 14, 16, 18 
-`points <http://fr.wikipedia.org/wiki/Point_(unit%C3%A9)>`_, etc), différents poids (léger, normal, semi-gras, gras, etc), différentes densités (condensé, normal, etc)...
+`points <http://fr.wikipedia.org/wiki/Point_(unit%C3%A9)>`_, etc),
+différents poids (léger, normal, semi-gras, gras, etc),
+différentes densités (condensé, normal, etc)...
 
 Exemple simple :
   Pour plus de lisibilité, on souhaite que les tailles les plus petites
@@ -68,16 +70,24 @@ de la fonte.
 Forces et faiblesses
 ====================
 
-+-----------------------------------+------------------------+
-| Forces                            | Faiblesses             |
-+===================================+========================+
-| Tous les avantages du code source | Mauvaise documentation |
-+-----------------------------------+------------------------+
+:Forces:
+  * Écrire un minimum d'équations pour un maximum de résultats
+  * Aucun bug connu
+  * Conservation de la procédure et non du résultat
+      - rigueur scientifique
+      - modifier une étape modifiera toute la fonte en conséquence
+      - pérennité
 
+:Faiblesses:
+  * Documentation difficilement abordable
+  * Monochrome uniquement
+  * Requiert les talents de designer, mathématicien et informaticien
 
 Projets utilisant MetaFont
 ==========================
 
-- `TeX <http://fr.wikipedia.org/wiki/TeX>`_
-- `LaTeX <http://www.latex-project.org/>`_
-- `LilyPond <http://lilypond.org>`_
+- `MetaPost <http://fr.wikipedia.org/wiki/MetaPost>`_
+- Les fontes de caractères de `TeX <http://fr.wikipedia.org/wiki/TeX>`_
+  et toutes ses variantes (`LaTeX <http://www.latex-project.org/>`_,
+  `ConTeXt <http://fr.wikipedia.org/wiki/Context>`_...)
+- Les fontes Feta et Parmesan de `LilyPond <http://lilypond.org>`_
