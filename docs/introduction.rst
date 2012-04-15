@@ -3,15 +3,21 @@ Qu'est-ce que MetaFont ?
 ************************
 
 .. todo::
-    Finir cette introduction.
+  Finir cette introduction.
 
 Historique
 ===========
 
 MetaFont est un langage de programmation permettant de générer des
 `fontes de caractères <http://fr.wikipedia.org/wiki/Fonte_de_caract%C3%A8res>`_.
-Il fut créé par le mathématicien et informaticien `Donald Knuth <http://fr.wikipedia.org/wiki/Donald_Knuth>`_ en 1977 en même temps que `TeX <http://fr.wikipedia.org/wiki/TeX>`_, un logiciel de composition de documents depuis utilisé par une majeure partie de la communauté scientifique internationale.
+Il fut créé par le mathématicien et informaticien
+`Donald Knuth <http://fr.wikipedia.org/wiki/Donald_Knuth>`_ en 1977
+en même temps que `TeX <http://fr.wikipedia.org/wiki/TeX>`_,
+un logiciel de composition de documents depuis utilisé par
+une majeure partie de la communauté scientifique internationale.
 
+.. seealso::
+  `Code source du programme MetaFont <http://www.tex.ac.uk/ctan/systems/knuth/dist/mf/mf.web>`_
 
 Principe de fonctionnement
 ==========================
@@ -60,8 +66,8 @@ On ne conserve que les équations ayant permis de mettre au point la fonte.
 MetaFont se charge de trouver les solutions des équations puis d'en faire
 une fonte utilisable.
 
-À tout moment, on dispose donc du `code source <http://fr.wikipedia.org/wiki/Code_source>`_
-de la fonte.
+À tout moment, on dispose donc du
+`code source <http://fr.wikipedia.org/wiki/Code_source>`_ de la fonte.
 Ainsi, si on désire réduire l'inclinaison de l'italique, il suffit de changer
 un seul paramètre pour que le changement s'effectue sur tous les caractères
 de la fonte.
@@ -87,7 +93,60 @@ Projets utilisant MetaFont
 ==========================
 
 - `MetaPost <http://fr.wikipedia.org/wiki/MetaPost>`_
-- Les fontes de caractères de `TeX <http://fr.wikipedia.org/wiki/TeX>`_
-  et toutes ses variantes (`LaTeX <http://www.latex-project.org/>`_,
+- `TeX <http://fr.wikipedia.org/wiki/TeX>`_
+  et ses variantes (`LaTeX <http://www.latex-project.org/>`_,
   `ConTeXt <http://fr.wikipedia.org/wiki/Context>`_...)
-- Les fontes Feta et Parmesan de `LilyPond <http://lilypond.org>`_
+- `LilyPond <http://lilypond.org>`_
+
+Exemples de fontes
+==================
+
+- `Computer Modern <http://fr.wikipedia.org/wiki/Computer_Modern>`_
+  de TeX
+- `Feta <http://lilypond.org/doc/v2.14/Documentation/notation/the-feta-font>`_
+  de LilyPond
+
+De MetaFont à OpenType
+======================
+
+La création d'une fonte `OpenType <http://fr.wikipedia.org/wiki/OpenType>`_
+à l'aide de MetaFont n'est hélas pas simple.
+Elle comporte de nombreuses étapes intermédiaires.
+
+Image matricielle → image vectorielle
+-------------------------------------
+
+La `compilation <http://fr.wikipedia.org/wiki/Compilation_(informatique)>`_
+d'un code source MetaFont permet d'obtenir une ou des images.
+Hélas, MetaFont date d'une époque où les imprimantes vectorielles
+n'existaient pas.
+Le format de sortie est donc
+`matriciel <http://fr.wikipedia.org/wiki/Image_matricielle>`_ et non
+`vectoriel <http://fr.wikipedia.org/wiki/Image_vectorielle>`_.
+
+Il existe heureusement quelques programmes permettant d'obtenir
+des images vectorielles à partir de code MetaFont :
+
+- `METATYPE1 <http://www.ctan.org/tex-archive/fonts/utilities/metatype1/>`_
+  (`documentation <http://www.ntg.nl/maps/26/15.pdf>`_),
+  script `Perl <http://fr.wikipedia.org/wiki/Perl_(langage)>`_
+  par l'équipe polonaise JNS
+- `mf2pt1 <http://www.ctan.org/tex-archive/support/mf2pt1/>`_,
+  script Perl par Scott Pakin
+- `mftrace <http://lilypond.org/mftrace/>`_,
+  script `Python <http://fr.wikipedia.org/wiki/Python_(langage)>`_
+  par le créateur de LilyPond,
+  Han-Wen Nienhuys
+
+Le point commun de ces scripts est l'utilisation de MetaPost.
+MetaPost permet en effet de créer des dessins vectoriels
+à partir d'un code presque identique à MetaFont.
+
+Images vectorielles → fonte
+---------------------------
+
+.. todo::
+  Finir cette partie
+
+Il faut principalement utiliser
+`FontForge <http://fr.wikipedia.org/wiki/FontForge>`_.
