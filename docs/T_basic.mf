@@ -1,0 +1,19 @@
+beginchar("T", 10pt#, 12pt#, 0);
+
+  z1 = (w/2, 0);
+  z2 = 1/2 [z3, z4];
+  z3 = (0, h);
+  z4 = (w, h);
+
+  pickup pencircle scaled 2pt;
+
+  draw z1
+    -- z2;
+  draw z3
+    -- z4;
+
+  labels(1, 2, 3, 4);
+
+endchar;
+
+end;

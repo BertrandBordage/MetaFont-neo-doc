@@ -78,7 +78,7 @@ Forces et faiblesses
 
 :Forces:
   * Écrire un minimum d'équations pour un maximum de résultats
-  * Aucun bug connu
+  * Aucun bug connu (327,68 $ à celui qui trouvera un bug)
   * Conservation de la procédure et non du résultat
       - rigueur scientifique
       - modifier une étape modifiera toute la fonte en conséquence
@@ -106,26 +106,33 @@ Exemples de fontes
 - `Feta <http://lilypond.org/doc/v2.14/Documentation/notation/the-feta-font>`_
   de LilyPond
 
-De MetaFont à OpenType
-======================
+.. _conversions:
 
-La création d'une fonte `OpenType <http://fr.wikipedia.org/wiki/OpenType>`_
-à l'aide de MetaFont n'est hélas pas simple.
-Elle comporte de nombreuses étapes intermédiaires.
+Conversions
+===========
 
-Image matricielle → image vectorielle
--------------------------------------
+MetaFont → images matricielles
+------------------------------
 
 La `compilation <http://fr.wikipedia.org/wiki/Compilation_(informatique)>`_
-d'un code source MetaFont permet d'obtenir une ou des images.
-Hélas, MetaFont date d'une époque où les imprimantes vectorielles
+d'un code source de syntaxe MetaFont à l'aide du programme MetaFont
+(dont la commande est ``mf``) permet d'obtenir une fonte TeX_.
+Hélas, MetaFont et TeX datent d'une époque où les imprimantes vectorielles
 n'existaient pas.
 Le format de sortie est donc
 `matriciel <http://fr.wikipedia.org/wiki/Image_matricielle>`_ et non
 `vectoriel <http://fr.wikipedia.org/wiki/Image_vectorielle>`_.
 
-Il existe heureusement quelques programmes permettant d'obtenir
-des images vectorielles à partir de code MetaFont :
+La fonte TeX_ obtenue (extension ``.2602gf``) n'est pas directement lisible.
+Pour l'ouvrir, avec *evince* par exemple, on la convertit avec ``gftodvi``.
+
+MetaFont → OpenType
+-------------------
+
+La création d'une fonte `OpenType <http://fr.wikipedia.org/wiki/OpenType>`_
+à l'aide de MetaFont n'est hélas pas simple.
+Elle comporte de nombreuses étapes intermédiaires.
+Heureusement, quelques programmes permettent de simplifier ce travail :
 
 - `METATYPE1 <http://www.ctan.org/tex-archive/fonts/utilities/metatype1/>`_
   (`documentation <http://www.ntg.nl/maps/26/15.pdf>`_),
@@ -138,15 +145,23 @@ des images vectorielles à partir de code MetaFont :
   par le créateur de LilyPond,
   Han-Wen Nienhuys
 
-Le point commun de ces scripts est l'utilisation de MetaPost.
+Le point commun de ces scripts est l'utilisation de MetaPost_.
 MetaPost permet en effet de créer des dessins vectoriels
 à partir d'un code presque identique à MetaFont.
 
-Images vectorielles → fonte
----------------------------
+Le plus simple à utiliser est mf2pt1_, c'est pourquoi je l'utiliserai
+tout au long de cette documentation.  De plus, le projet LilyPond,
+pour lequel fut créé mftrace_, utilise désormais ce script.  LilyPond
+étant à ma connaissance le dernier projet utilisant MetaFont, il me
+paraît d'autant plus utile d'utiliser `mf2pt1`.
 
-.. todo::
-  Finir cette partie
-
-Il faut principalement utiliser
+mf2pt1 génère une fonte au format
+`PFB <http://en.wikipedia.org/wiki/Printer_Font_Binary>`_.
+Elle est directement utilisable sous Linux, mais pour des raisons de
+compatibilité et de possibilités, une conversion vers
+OpenType est indispensable.  Elle peut être facilement effectuée avec
 `FontForge <http://fr.wikipedia.org/wiki/FontForge>`_.
+
+.. warning:: *mf2pt1* ne gère pas toutes les possibilités de MetaFont.
+    Hélas il gère mal les ``penstroke`` et comporte par ailleurs
+    quelques bugs.
